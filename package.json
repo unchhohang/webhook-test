@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch 'src/**' --exec ts-node -r tsconfig-paths/register 'src/index.ts'"
+    "dev": "nodemon --watch 'src/**' --exec ts-node -r tsconfig-paths/register 'src/index.ts'",
+    "start": "node dist/index.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
