@@ -1,0 +1,30 @@
+
+{
+  "compilerOptions": {
+    "target": "ES2022",                                  
+    "module": "commonjs",                       
+    "rootDir": "./src",                     
+    "baseUrl": "./src",                   
+    "paths": {
+      "@/*": ["*"],
+      "@controllers/*": ["controllers/*"],
+      "@routes/*": ["routes/*"],
+      "@models/*": ["models/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
+      "@middleware/*": ["middleware/*"],
+      "@services/*": ["services/*"],
+      "@validation/*": ["validation/*"],
+      "@generator/*": ["generator/*"],
+    },                                     
+    "resolveJsonModule": true,                  
+    "outDir": "./dist",                           
+    "esModuleInterop": true,                       
+    "forceConsistentCasingInFileNames": true,       
+    "strict": true,                                  
+    "noImplicitAny": true,          
+    "skipLibCheck": true
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "dist"]
+}
