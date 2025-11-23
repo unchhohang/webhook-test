@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
   console.log(`\n\nWebhook received ${timestamp}\n`);
   console.log(JSON.stringify(req.body, null, 2));
 
-  axios.post('/campaing/chats', req.body);
+  axios.post('/mesgTest', req.body);
   res.status(200).end();
 });
 
