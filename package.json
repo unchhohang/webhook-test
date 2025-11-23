@@ -18,7 +18,9 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@types/axios": "^0.14.4",
     "@types/express": "^5.0.5",
+    "axios": "^1.13.2",
     "express": "^5.1.0",
     "nodemon": "^3.1.11",
     "tsconfig-paths": "^4.2.0"
