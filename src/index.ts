@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './lib/axiosConfig';
 import express from 'express';
 
 // Create an Express app
