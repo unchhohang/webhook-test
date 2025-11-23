@@ -1,5 +1,6 @@
 import axios from './lib/axiosConfig';
 import express from 'express';
+import { Request } from 'express-jwt';
 
 // Create an Express app
 const app = express();
@@ -13,7 +14,7 @@ const port = process.env.PORT || 3000;
 const verifyToken = process.env.VERIFY_TOKEN;
 
 // Route for GET requests
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res) => {
   const { 'hub.mode': mode, 'hub.challenge': challenge, 'hub.verify_token': token } = req.query;
 
   if (mode === 'subscribe' && token === verifyToken) {
@@ -25,13 +26,14 @@ app.get('/', (req, res) => {
 });
 
 // Route for POST requests
-app.post('/', (req, res) => {
+app.post('/', (req: Request, res) => {
   const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
   console.log(`\n\nWebhook received ${timestamp}\n`);
   console.log(JSON.stringify(req.body, null, 2));
 
   try {
     axios.post('/mesgTest', req.body);
+      res.cookie('accessToken', req.cookies.accessToken );
     res.status(200);
   }catch(err){
     console.log(err);
