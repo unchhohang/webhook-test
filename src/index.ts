@@ -1,6 +1,8 @@
 import axios from './lib/axiosConfig';
 import express from 'express';
 import { Request } from 'express-jwt';
+import { WhatsAppWebhookPayload } from './types/whatsAppWebHookAPI';
+import isWhatsAppWebhook from './guards/whatAppAPI';
 
 // Create an Express app
 const app = express();
@@ -31,10 +33,24 @@ app.post('/', (req: Request, res) => {
   console.log(`\n\nWebhook received ${timestamp}\n`);
   console.log(JSON.stringify(req.body, null, 2));
 
+  const data = req.body
+
   try {
-    axios.post('/mesgTest', req.body);
+    if (!isWhatsAppWebhook(data)) {
+      throw new Error('This is not valid whats app api resonse')
+    }
+
+    const typeOfMesg = data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]?.type ?? 'text';
+
+    if (typeOfMesg === "image" ||
+      typeOfMesg === "audio" ||
+      typeOfMesg === "video") {
+      res.sendStatus(200)
+      return;
+    }
+    axios.post('/mesgTest', data);
     res.status(200);
-  }catch(err){
+  } catch (err) {
     console.log(err);
     res.status(500);
   }
