@@ -1,7 +1,6 @@
 import axios from './lib/axiosConfig';
 import express from 'express';
 import { Request } from 'express-jwt';
-import { WhatsAppWebhookPayload } from './types/whatsAppWebHookAPI';
 import isWhatsAppWebhook from './guards/whatAppAPI';
 
 // Create an Express app
