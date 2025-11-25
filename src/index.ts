@@ -33,7 +33,6 @@ app.post('/', (req: Request, res) => {
 
   try {
     axios.post('/mesgTest', req.body);
-      res.cookie('accessToken', req.cookies.accessToken );
     res.status(200);
   }catch(err){
     console.log(err);
