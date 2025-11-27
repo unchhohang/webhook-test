@@ -50,7 +50,7 @@ app.post('/', (req: Request, res) => {
       res.sendStatus(200)
       return;
     }
-    // axios.post('/mesgTest: ', data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]);
+    axios.post('/mesgTest', data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]);
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
