@@ -30,7 +30,6 @@ app.get('/', (req: Request, res) => {
 app.post('/', (req: Request, res) => {
   const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
   console.log(`\n\nWebhook received ${timestamp}\n`);
-  console.log(JSON.stringify(req.body, null, 2));
 
   const data = req.body
 
@@ -41,13 +40,17 @@ app.post('/', (req: Request, res) => {
 
     const typeOfMesg = data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]?.type ?? 'text';
 
+    const messsage = data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+
+    console.log(JSON.stringify(messsage, null, 2));
+
     if (typeOfMesg === "image" ||
       typeOfMesg === "audio" ||
       typeOfMesg === "video") {
       res.sendStatus(200)
       return;
     }
-    axios.post('/mesgTest: ', data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]);
+    // axios.post('/mesgTest: ', data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]);
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
