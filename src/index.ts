@@ -40,9 +40,13 @@ app.post('/', (req: Request, res) => {
 
     const typeOfMesg = data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]?.type ?? 'text';
 
-    const messsage = data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+    const message = data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
 
-    console.log(JSON.stringify(messsage, null, 2));
+    if (!message) {
+      throw new Error("No valid WhatsApp message found");
+    }
+
+    console.log(JSON.stringify(message, null, 2));
 
     if (typeOfMesg === "image" ||
       typeOfMesg === "audio" ||
