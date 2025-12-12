@@ -50,14 +50,13 @@ app.post('/', (req: Request, res) => {
       res.sendStatus(200)
       return;
     }
-    // axios.post('/campaign/chats', data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]);
 
     axios.post('/campaign/chats', data);
-    res.sendStatus(200);
+    return res.sendStatus(200);
 
   } catch (err) {
     console.log(err);
-    res.status(500);
+    return res.status(500);
   }
 
 });
