@@ -44,17 +44,17 @@ app.post('/', (req: Request, res) => {
 
     console.log(JSON.stringify(messsage, null, 2));
 
-    console.log('--------------see-------------');
-    console.log(JSON.stringify(data, null, 2));
-
     if (typeOfMesg === "image" ||
       typeOfMesg === "audio" ||
       typeOfMesg === "video") {
       res.sendStatus(200)
       return;
     }
-    axios.post('/mesgTest', data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]);
+    // axios.post('/campaign/chats', data?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]);
+
+    axios.post('/campaign/chats', data);
     res.sendStatus(200);
+
   } catch (err) {
     console.log(err);
     res.status(500);
