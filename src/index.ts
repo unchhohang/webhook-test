@@ -44,6 +44,9 @@ app.post('/', (req: Request, res) => {
 
     console.log(JSON.stringify(messsage, null, 2));
 
+    console.log('--------------see-------------');
+    console.log(JSON.stringify(data, null, 2));
+
     if (typeOfMesg === "image" ||
       typeOfMesg === "audio" ||
       typeOfMesg === "video") {
